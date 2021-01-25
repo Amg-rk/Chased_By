@@ -1,0 +1,6 @@
+#Assetsフォルダ以外を全て無視
+bin/*
+!Assets
+
+#.meta拡張子を全て無視
+*.meta

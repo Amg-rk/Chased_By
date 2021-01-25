@@ -1,0 +1,36 @@
+﻿<Properties StartupConfiguration="{1EAEF0BF-A9FD-C561-ADE5-E6984297FD6C}|">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets/_MyAssets/Script/Game/GhostControl.cs">
+    <Files>
+      <File FileName="Assets/_MyAssets/Script/Game/PlayerControl.cs" Line="288" Column="1" />
+      <File FileName="Assets/_MyAssets/Script/Game/EyeJackCircleControl.cs" />
+      <File FileName="Assets/_MyAssets/Script/Game/GhostControl.cs" Line="1" Column="1" />
+      <File FileName="Assets/_MyAssets/Script/UI/UICanvasManager.cs" Line="13" Column="6" />
+      <File FileName="Assets/_MyAssets/Script/UI/GameSceneManager.cs" Line="9" Column="6" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="Chsed By" expanded="True">
+            <Node name="Assets" expanded="True">
+              <Node name="_MyAssets" expanded="True">
+                <Node name="Script" expanded="True">
+                  <Node name="Game" expanded="True">
+                    <Node name="GhostControl.cs" selected="True" />
+                  </Node>
+                  <Node name="UI" expanded="True" />
+                </Node>
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="c6d59ddf-32c2-434d-9738-4bf639506e51" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
