@@ -12,6 +12,8 @@ public class GameSceneManager : MonoBehaviour
 
     [SerializeField] Transform uiCamera;
 
+    [SerializeField] Transform[] imageTrans;
+
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player").transform;
@@ -20,6 +22,19 @@ public class GameSceneManager : MonoBehaviour
 
     void Update()
     {
+        PlayerLightPointerCanvasSet();
+
+        UiCameraTransSet();
+
+        PlayerLifeDisplay(playerControl.PlayerLife);
+    }
+
+    void UiCameraTransSet(){
+        uiCamera.position = playerControl.PlayerCameraTrans.position;
+        uiCamera.rotation = playerControl.PlayerCameraTrans.rotation;
+    }
+
+    void PlayerLightPointerCanvasSet(){
         playerLightPointerCanvas.position = playerControl.PlayerLightPointerPos;
         playerLightPointerCanvas.rotation = playerControl.PlayerLightGun.rotation;
 
@@ -31,8 +46,15 @@ public class GameSceneManager : MonoBehaviour
         {
             playerLightPointerCanvas.gameObject.SetActive(true);
         }
+    }
 
-        uiCamera.position = playerControl.PlayerCameraTrans.position;
-        uiCamera.rotation = playerControl.PlayerCameraTrans.rotation;
+    void PlayerLifeDisplay(int playerLifeNumber){
+        foreach(var t in imageTrans){
+            t.gameObject.SetActive(false);
+        }
+
+        for(int i = 0; i < playerLifeNumber; i++){
+            imageTrans[i].gameObject.SetActive(true);
+        }
     }
 }

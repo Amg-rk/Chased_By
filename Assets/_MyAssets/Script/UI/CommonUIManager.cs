@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class CommonUIManager : MonoBehaviour
 {
@@ -22,6 +21,7 @@ public class CommonUIManager : MonoBehaviour
         SceneManager.sceneLoaded += SceneLoaded;
 
         SceneManager.LoadScene(gameSceneName);
+
     }
 
     void SceneLoaded(Scene loadedScene, LoadSceneMode mode)
