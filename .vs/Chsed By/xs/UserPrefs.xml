@@ -4,8 +4,7 @@
       <File FileName="Assets/_MyAssets/Script/Game/PlayerControl.cs" Line="288" Column="1" />
       <File FileName="Assets/_MyAssets/Script/Game/EyeJackCircleControl.cs" />
       <File FileName="Assets/_MyAssets/Script/Game/GhostControl.cs" Line="1" Column="1" />
-      <File FileName="Assets/_MyAssets/Script/UI/UICanvasManager.cs" Line="13" Column="6" />
-      <File FileName="Assets/_MyAssets/Script/UI/GameSceneManager.cs" Line="9" Column="6" />
+      <File FileName="Assets/_MyAssets/Script/UI/GameSceneManager.cs" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -28,7 +27,7 @@
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
-  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="c6d59ddf-32c2-434d-9738-4bf639506e51" />
+  <MonoDevelop.Ide.ItemProperties.Assembly-CSharp PreferredExecutionTarget="421e260d-9a7b-4d61-9a45-76ccc53a43bf" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
