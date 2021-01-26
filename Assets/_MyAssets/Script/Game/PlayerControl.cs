@@ -44,7 +44,11 @@ public class PlayerControl : MonoBehaviour
     float playerRunSpeed = 0.1f;
     const float playerDefaultRunSpeed = 0.1f;
     const float playerSlowedSpeed = 0.05f;
-    const float playerRotateSpeed = 4f;
+
+    float playerRotateSpeed = 4f;
+    const float playerDefaultRotateSpeed = 4f;
+    const float playerSlowedRotateSpeed = 2f;
+
     const float playerJumpPower = 5f;
 
     float playerCameraAngleX;
@@ -163,11 +167,13 @@ public class PlayerControl : MonoBehaviour
         if (collision.transform.CompareTag("Slow")){
             playerAdditionalState = PlayerAdditionalState.Slowed; 
             playerRunSpeed = playerSlowedSpeed;
+            playerRotateSpeed = playerSlowedRotateSpeed;
         }
         else
         {
             playerAdditionalState = PlayerAdditionalState.Nomal;
             playerRunSpeed = playerDefaultRunSpeed;
+            playerRotateSpeed = playerDefaultRotateSpeed;
         }
     }
 

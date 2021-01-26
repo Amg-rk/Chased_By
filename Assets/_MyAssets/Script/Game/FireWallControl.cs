@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FireWallControl : MonoBehaviour
 {
-    const float fireWallSpeed = 0.03f;
+    const float fireWallSpeed = 0.038f;
 
     // Start is called before the first frame update
     void Start()
