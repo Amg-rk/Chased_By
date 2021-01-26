@@ -12,7 +12,9 @@ public class GameSceneManager : MonoBehaviour
 
     [SerializeField] Transform uiCamera;
 
-    [SerializeField] Transform[] imageTrans;
+    [SerializeField] Transform[] lifeImageTrans;
+
+    [SerializeField] Transform ghostEyeImageTrans;
 
     void Start()
     {
@@ -27,6 +29,8 @@ public class GameSceneManager : MonoBehaviour
         UiCameraTransSet();
 
         PlayerLifeDisplay(playerControl.PlayerLife);
+
+        GhostEyeDisplay();
     }
 
     void UiCameraTransSet(){
@@ -49,12 +53,24 @@ public class GameSceneManager : MonoBehaviour
     }
 
     void PlayerLifeDisplay(int playerLifeNumber){
-        foreach(var t in imageTrans){
+        foreach(var t in lifeImageTrans){
             t.gameObject.SetActive(false);
         }
 
         for(int i = 0; i < playerLifeNumber; i++){
-            imageTrans[i].gameObject.SetActive(true);
+            lifeImageTrans[i].gameObject.SetActive(true);
+        }
+    }
+
+    void GhostEyeDisplay()
+    {
+        if(playerControl.EyeJackCircleControl.ghostList.Count > 0)
+        {
+            ghostEyeImageTrans.gameObject.SetActive(true);
+        }
+        else
+        {
+            ghostEyeImageTrans.gameObject.SetActive(false);
         }
     }
 }

@@ -13,7 +13,7 @@ public class FireWallControl : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         this.transform.Translate(0f, 0f, fireWallSpeed);
     }
