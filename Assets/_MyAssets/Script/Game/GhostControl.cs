@@ -3,6 +3,7 @@ using System;
 using UnityEngine;
 
 enum GhostState{
+    Wait,
     Nomal,
     Attack,
     Dead
@@ -12,7 +13,9 @@ public class GhostControl : MonoBehaviour
 {
     const float ghostRunSpeed = 0.02f;
     const float ghostAttackSpeed = 0.05f;
-    const float ghostAttackDistance = 20f;
+    const float ghostAttackDistance = 5f;
+
+    const float ghostStartDistance = 50f;
 
     const int invisibleLayer = 8;
     const int visibleLayer = 0;
@@ -32,7 +35,7 @@ public class GhostControl : MonoBehaviour
     void Awake()
     {
         ghostMeshRenderer = GetComponentsInChildren<MeshRenderer>();
-        ghostState = GhostState.Nomal;
+        ghostState = GhostState.Wait;
 
         player = GameObject.FindGameObjectWithTag("Player").transform;
     }
@@ -51,16 +54,22 @@ public class GhostControl : MonoBehaviour
 
     void FixedUpdate()
     {
+
         GhostMove();
 
-        if((player.position - this.transform.position).sqrMagnitude < ghostAttackDistance)
+        float ghostAndPlayerDistance = (player.position - this.transform.position).sqrMagnitude;
+
+        if(ghostAndPlayerDistance < ghostAttackDistance * ghostAttackDistance)
         {
             GhostAttacking();
         }
-        else
-        {
+        else if(ghostAndPlayerDistance < ghostStartDistance * ghostStartDistance){
             ghostState = GhostState.Nomal;
             LayerChange(this.transform, invisibleLayer);
+        }
+        else
+        {
+            ghostState = GhostState.Wait;
         }
     }
 
@@ -101,6 +110,8 @@ public class GhostControl : MonoBehaviour
     void GhostMove()
     {
         Vector3 moveVec = Vector3.zero;
+
+        if(ghostState == GhostState.Wait){ return; }
 
         if (ghostState == GhostState.Nomal)
         {
