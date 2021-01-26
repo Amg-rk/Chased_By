@@ -51,12 +51,12 @@ public class PlayerControl : MonoBehaviour
 
     const float lightDistance = 10f;
 
-    const int lightSurvivalFlame = 30;
+    const int lightSurvivalFlame = 20;
     int lightSurvival = 0;
 
 
     int lightCoolingFlame = 0;
-    const int lightCooledFlame = 80; 
+    const int lightCooledFlame = 10; 
 
     const int groundLayer = 9;
 
@@ -139,19 +139,18 @@ public class PlayerControl : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.layer == groundLayer) {
-            playerState = PlayerState.Grounded;
-        }
-
         if (!collision.transform.CompareTag("Ghost") || !ReferenceEquals(attackingGhost, null)) { return; }
         collision.gameObject.GetComponent<GhostControl>().GhostDisappear();
         PlayerLife--;
     }
 
     void OnCollisionStay(Collision collision){
-        Debug.Log(collision.transform.tag);
+        if (collision.gameObject.layer == groundLayer)
+        {
+            playerState = PlayerState.Grounded;
+        }
 
-        if(collision.transform.CompareTag("Slow")){
+        if (collision.transform.CompareTag("Slow")){
             playerAdditionalState = PlayerAdditionalState.Slowed; 
             playerRunSpeed = playerSlowedSpeed;
         }
