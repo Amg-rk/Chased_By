@@ -15,7 +15,7 @@ public class GhostControl : MonoBehaviour
     const float ghostAttackSpeed = 0.1f;
     const float ghostAttackDistance = 6f;
 
-    const float ghostStartDistance = 50f;
+    const float ghostStartDistance = 45f;
 
     const int invisibleLayer = 8;
     const int visibleLayer = 0;

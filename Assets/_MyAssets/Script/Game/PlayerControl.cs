@@ -44,7 +44,7 @@ public class PlayerControl : MonoBehaviour
     float playerRunSpeed = 0.1f;
     const float playerDefaultRunSpeed = 0.1f;
     const float playerSlowedSpeed = 0.05f;
-    const float playerRotateSpeed = 1.5f;
+    const float playerRotateSpeed = 4f;
     const float playerJumpPower = 5f;
 
     const int fps = 60;
