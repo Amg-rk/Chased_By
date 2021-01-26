@@ -47,6 +47,9 @@ public class PlayerControl : MonoBehaviour
     const float playerRotateSpeed = 4f;
     const float playerJumpPower = 5f;
 
+    float playerCameraAngleX;
+    const float playerDefaultCameraAngleX = 40f;
+
     const int fps = 60;
 
     const float lightDistance = 10f;
@@ -131,6 +134,8 @@ public class PlayerControl : MonoBehaviour
         playerAdditionalState = PlayerAdditionalState.Nomal;
         playerLightState = PlayerLightState.Ready;
 
+        playerCameraAngleX = playerCamera.transform.rotation.eulerAngles.x;
+
         //lightStock = firstLightStock;
         PlayerLife = 3;
 
@@ -209,7 +214,7 @@ public class PlayerControl : MonoBehaviour
     {
         Vector3 moveVec = Vector3.zero;
         Vector3 rotateVec = Vector3.zero;
-
+        //移動
         if (Input.GetKey(KeyCode.W))
         {
             moveVec = new Vector3(0f, 0f, playerRunSpeed);
@@ -220,7 +225,7 @@ public class PlayerControl : MonoBehaviour
         }
 
         Player.Translate(moveVec);
-
+        //y軸上の回転
         if (Input.GetKey(KeyCode.A))
         {
             rotateVec = new Vector3(0f, -1 * playerRotateSpeed, 0f);
@@ -232,10 +237,32 @@ public class PlayerControl : MonoBehaviour
 
         Player.Rotate(rotateVec);
 
+        //x軸上のカメラ移動
+        if (Input.GetKey(KeyCode.R))
+        {
+            playerCameraAngleX -= 0.5f;
+        }
+        else
+        {
+            playerCameraAngleX = playerDefaultCameraAngleX;
+        }
+
+        //カメラのx角度はplayerDefaultCameraAngleXから20まで
+        playerCameraAngleX = Mathf.Clamp(playerCameraAngleX, 20f, playerDefaultCameraAngleX);
+
+        playerCameraTrans.transform.rotation = Quaternion.Euler(
+            new Vector3(
+                playerCameraAngleX,
+                playerCameraTrans.rotation.eulerAngles.y,
+                playerCameraTrans.rotation.eulerAngles.z ));
+
+        //フラッシュ(攻撃)
         if (Input.GetKeyDown(KeyCode.E))
         {
             FlashLight();
         }
+
+        //ジャンプ(接地していなければ無効)
 
         if (playerState != PlayerState.Grounded) { return; }
 
