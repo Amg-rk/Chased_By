@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Ghost
   - Ground
+  - Slow
   layers:
   - Default
   - TransparentFX

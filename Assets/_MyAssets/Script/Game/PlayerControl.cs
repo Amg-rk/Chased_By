@@ -14,6 +14,12 @@ public enum PlayerState
     Jump
 }
 
+public enum PlayerAdditionalState
+{
+    Nomal,
+    Slowed
+}
+
 public enum PlayerLightState
 {
     Ready,
@@ -31,11 +37,13 @@ public class PlayerControl : MonoBehaviour
         private set { cameraState = CameraState.Player; }
     }
 
-
     PlayerState playerState;
     PlayerLightState playerLightState;
+    PlayerAdditionalState playerAdditionalState;
 
-    const float playerRunSpeed = 0.07f;
+    float playerRunSpeed = 0.1f;
+    const float playerDefaultRunSpeed = 0.1f;
+    const float playerSlowedSpeed = 0.05f;
     const float playerRotateSpeed = 1.5f;
     const float playerJumpPower = 5f;
 
@@ -48,7 +56,7 @@ public class PlayerControl : MonoBehaviour
 
 
     int lightCoolingFlame = 0;
-    const int lightCooledFlame = 120; 
+    const int lightCooledFlame = 80; 
 
     const int groundLayer = 9;
 
@@ -62,8 +70,8 @@ public class PlayerControl : MonoBehaviour
 
     Rigidbody playerRigidBody;
 
-    int lightStock;
-    const int firstLightStock = 5;
+    //int lightStock;
+    //const int firstLightStock = 5;
 
     GameObject attackingGhost = null;
 
@@ -120,9 +128,10 @@ public class PlayerControl : MonoBehaviour
     {
         cameraState = CameraState.Player;
         playerState = PlayerState.Grounded;
+        playerAdditionalState = PlayerAdditionalState.Nomal;
         playerLightState = PlayerLightState.Ready;
 
-        lightStock = firstLightStock;
+        //lightStock = firstLightStock;
         PlayerLife = 3;
 
         playerLight.gameObject.SetActive(false);
@@ -137,6 +146,20 @@ public class PlayerControl : MonoBehaviour
         if (!collision.transform.CompareTag("Ghost") || !ReferenceEquals(attackingGhost, null)) { return; }
         collision.gameObject.GetComponent<GhostControl>().GhostDisappear();
         PlayerLife--;
+    }
+
+    void OnCollisionStay(Collision collision){
+        Debug.Log(collision.transform.tag);
+
+        if(collision.transform.CompareTag("Slow")){
+            playerAdditionalState = PlayerAdditionalState.Slowed; 
+            playerRunSpeed = playerSlowedSpeed;
+        }
+        else
+        {
+            playerAdditionalState = PlayerAdditionalState.Nomal;
+            playerRunSpeed = playerDefaultRunSpeed;
+        }
     }
 
     void OnCollisionExit(Collision collision)
@@ -210,17 +233,17 @@ public class PlayerControl : MonoBehaviour
 
         Player.Rotate(rotateVec);
 
-        if(playerState != PlayerState.Grounded) { return; }
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            FlashLight();
+        }
+
+        if (playerState != PlayerState.Grounded) { return; }
 
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Vector3 jumpForce = new Vector3(0f, playerJumpPower, 0f);
             playerRigidBody.AddForce(jumpForce, ForceMode.Impulse);
-        }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            FlashLight();
         }
     }
 

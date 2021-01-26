@@ -11,9 +11,9 @@ enum GhostState{
 
 public class GhostControl : MonoBehaviour
 {
-    const float ghostRunSpeed = 0.02f;
-    const float ghostAttackSpeed = 0.05f;
-    const float ghostAttackDistance = 5f;
+    const float ghostRunSpeed = 0.06f;
+    const float ghostAttackSpeed = 0.1f;
+    const float ghostAttackDistance = 6f;
 
     const float ghostStartDistance = 50f;
 

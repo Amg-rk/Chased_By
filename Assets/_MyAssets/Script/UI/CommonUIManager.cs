@@ -5,7 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class CommonUIManager : MonoBehaviour
 {
-    const string gameSceneName = "GameScene";
+    const string sampleSceneName = "GameScene";
+    const string stage1SceneName = "Stage2";
 
     [SerializeField] Transform GameSceneUI;
     [SerializeField] Transform ClearSceneUI;
@@ -20,7 +21,7 @@ public class CommonUIManager : MonoBehaviour
     {
         SceneManager.sceneLoaded += SceneLoaded;
 
-        SceneManager.LoadScene(gameSceneName);
+        SceneManager.LoadScene(stage1SceneName);
 
     }
 
@@ -28,7 +29,10 @@ public class CommonUIManager : MonoBehaviour
     {
         switch (loadedScene.name)
         {
-            case gameSceneName:
+            case sampleSceneName:
+                GameSceneUI.gameObject.SetActive(true);
+                break;
+            case stage1SceneName:
                 GameSceneUI.gameObject.SetActive(true);
                 break;
             default:
