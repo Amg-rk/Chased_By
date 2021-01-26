@@ -144,6 +144,11 @@ public class PlayerControl : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        if (collision.transform.CompareTag("Kill"))
+        {
+            PlayerLife = 0;
+        }
+
         if (!collision.transform.CompareTag("Ghost") || !ReferenceEquals(attackingGhost, null)) { return; }
         collision.gameObject.GetComponent<GhostControl>().GhostDisappear();
         PlayerLife--;

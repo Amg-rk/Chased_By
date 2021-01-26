@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class CommonUIManager : MonoBehaviour
 {
     const string sampleSceneName = "GameScene";
-    const string stage1SceneName = "Stage4";
+    const string stage1SceneName = "Stage5";
 
     [SerializeField] Transform GameSceneUI;
     [SerializeField] Transform ClearSceneUI;

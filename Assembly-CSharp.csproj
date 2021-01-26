@@ -64,6 +64,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Assets\_MyAssets\Script\Game\EyeJackCircleControl.cs" />
+    <Compile Include="Assets\_MyAssets\Script\Game\FireWallControl.cs" />
     <Compile Include="Assets\_MyAssets\Script\Game\GhostControl.cs" />
     <Compile Include="Assets\_MyAssets\Script\Game\PlayerControl.cs" />
     <Compile Include="Assets\_MyAssets\Script\UI\CommonUIManager.cs" />
